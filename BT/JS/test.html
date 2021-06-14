@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<!-- b1: In ra thông báo khi click vào button -->
+	<h2>in ra thông tin khi click vafoo button</h2>
+	<button id="btn" onclick="hello()">Cin chào</button>
+	<script type="text/javascript">
+		// function hello(){
+		// 	alert("xin chào");
+		// }
+		var btn = document.getElementById('btn') ;
+		btn.onclick = function()
+		{
+			alert("xin chào");
+		}
+
+	</script>
+
+<!-- b2: kiem tra so nguyen to  -->
+	
+	<input type="number" id="number" placeholder="nhập vào một số">
+	<button onclick="songuyento()"> kierm tra</button>
+	<script type="text/javascript">
+		function songuyento()
+		{
+			var so  = document.getElementById("number").value ;
+			var flag = true ;
+			if (so < 2)
+			{
+				flag = false ;
+				document.write("k phai so nguyen to") ;
+
+			}
+			else 
+			{
+				for (var i = 2; i < so-1; i++)
+        			{
+			            if (so % i == 0){
+			                flag = false;
+			                break;
+			            }
+        			}
+        		document.write(" so nguyen to ");
+        		
+			}
+			
+		}
+	</script>
+
+<!-- b3: Thay đổi nội dung của thẻ HTML bằng Javascript -->
+
+	 <h2>Thay đổi nội dung của thẻ HTML</h2>
+        <div id="content" style="padding: 20px; background: blue; color: white; margin: 40px 0px;">
+            Đây là nội dung cần thay đổi.
+        </div>
+        <input type="button" id="btn1" value="Xem nội dung 1"/>
+        <input type="button" id="btn2" value="Xem nội dung 2"/>
+
+     <script type="text/javascript">
+     	var btn1 = document.getElementById('btn1') ;
+     	var btn2 = document.getElementById('btn2') ;
+     	btn1.onclick = function()
+     	{
+     		document.getElementById('content').innerHTML = "xin chào bạn";
+     		document.getElementById('content').style.background = "red";
+     	}
+     	btn2.onclick = function()
+     	{
+     		document.getElementById('content').innerHTML = "xin chào bạn 2";
+     		document.getElementById('content').style.background = "orange";
+     	}
+     </script>
+
+  <!-- b4: bài tập vòng for: Xây dựng chương trình có một ô Input, một button. Khi click vào button thì in các số từ 1 tới giá trị của ô input -->
+
+  		<h2>Vòng for</h2>
+  		<input type="number" style="width: 100px;" id="number1">
+  		<button onclick="bai4()">Click</button>
+  		<p id="demo"></p>
+  		<script type="text/javascript">
+  			function bai4()
+  			{
+  				var so = document.getElementById('number1').value ;
+  				var string = "" ;
+  				
+  				for (let i = 1 ; i <= so; i++ )
+  				{
+  					string += i + '<br>' ;
+
+  				}
+  				document.getElementById('demo').innerHTML = string;
+  			}
+  		</script>
+
+  	<!-- b5: tạo một form đăng ký thành viên gồm các thông tin: Tên đăng nhập, mật khẩu, điện thoại, email, và cuối cùng là địa chỉ. -->
+  	<form method="post" action="" id="loginform">
+    <table border="1" cellpadding="10">
+        <tr>
+            <td>Tên đăng nhập: </td>
+            <td>
+                <input type="text" id="username" name="username" value=""/>
+                <span id="username_error"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Mật khẩu: </td>
+            <td>
+                <input type="text" id="password" name="password" value=""/>
+                <span id="password_error"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Nhập lại mật khẩu: </td>
+            <td>
+                <input type="text" id="repassword" name="repassword" value=""/>
+                <span id="repassword_error"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Phone: </td>
+            <td>
+                <input type="text" id="phone" name="phone" value=""/>
+                <span id="phone_error"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Email </td>
+            <td>
+                <input type="text" id="email" name="email" value=""/>
+                <span id="email_error"></span>
+            </td>
+        </tr>
+ 
+        <tr>
+            <td>Địa chỉ </td>
+            <td>
+                <input type="text" id="address" name="address" value=""/>
+                <span id="address_error"></span>
+            </td>
+        </tr>
+ 
+        <tr>
+            <td></td>
+            <td>
+ 
+                <input type="submit" onclick="return validate();" id="btn" name="btn" value="Đăng ký"/>
+            </td>
+        </tr>
+    </table>
+</form>
+
+  	<script type="text/javascript">
+  		function getValue(id){
+		    return document.getElementById(id).value.trim();
+		}
+ 
+
+		function showError(key, mess){
+		    document.getElementById(key + '_error').innerHTML = mess;
+		}
+  		function validate()
+  		{
+  			var flag = true;
+     
+		    // 1 username
+		    var username = getValue('username');
+		    if (username == '' || username.length < 5 || !/^[a-zA-Z0-9]+$/.test(username)){
+		        flag = false;
+		        showError('username', 'Vui lòng kiểm tra lại Username');
+		    }
+		     
+		    // 2. password
+		    var password = getValue('password');
+		    var repassword = getValue('repassword');
+		    if (password == '' || password.length < 8 || password != repassword){
+		        flag = false;
+		        showError('password', 'Vui lòng kiểm tra lại Password');
+		    }
+		     
+		    // 3. Phone
+		    var phone = getValue('phone');
+		    if (phone != '' &&  !/^[0-9]{10}$/.test(phone)){
+		        flag = false;
+		        showError('phone', 'Vui lòng kiểm tra lại Phone');
+		    }
+		     
+		    // 4. Email
+		    var email = getValue('email');
+		    var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+		    if (!mailformat.test(email)){
+		        flag = false;
+		         
+		        showError('phone', 'Vui lòng kiểm tra lại Email');
+		    }
+		     
+		    return flag;
+  		}
+  	</script>
+
+
+  	<!-- b5: Cho một ô checkbox và 2 button, hãy xử lý sự kiện khi click vòa button thứ nhất thì thiết lập trạng thái checked cho checkbox, khi click vào button thứ hai thì hủy bỏ trạng thái checked cho checkbox -->
+
+  	<input type="checkbox" id="checkbox1">
+  	<input type="checkbox" id="checkbox2">
+  	<script type="text/javascript">
+  		document.getElementById('checkbox1').onclick = function()
+  		{
+  			document.getElementById('checkbox2').checked = false ;
+  		}
+  		document.getElementById('checkbox2').onclick = function()
+  		{
+  			document.getElementById('checkbox1').checked = false ;
+  		}
+  	</script>
+
+  	<!-- b6:  lấy thông tin về sở thích của người dùng, mỗi sở thích là một checkbox và nếu người dùng thích cái nào thì check vào cái đó. Hãy tạo ra một button xử lý khi click vào button đó thì hiển thị danh sách các sở thích mà người dùng đa chọn. -->
+  		<br><br>
+
+  		
+        <input type="checkbox" name="hobby" value="Đi chơi"/> <label>Đi chơi</label> <br/>
+        <input type="checkbox" name="hobby" value="Đi du lịch"/> <label>Đi du lịch</label> <br/>
+        <input type="checkbox" name="hobby" value="Đi ăn"/> <label>Đi ăn</label> <br/>
+        <input type="checkbox" name="hobby" value="Đi siêu thị"/> <label>Đi siêu thị</label> <br/>
+        <input type="checkbox" name="hobby" value="học lập trình"/> <label>học lập trình</label> <br/>
+        
+            <br/> <br/>
+         <input type="button" id="btn6" value="Xem kết quả"/>
+        <script type="text/javascript">
+        	document.getElementById('btn').onclick = function() {
+        	// 	var result  = "" ;
+        	// 	var checkbox = document.getElementsByName('hobby');
+        	// 	for(let i = 0 ; i <= checkbox.length ; i++)
+        	// 	{
+        	// 		if ( checkbox[i].checked === true )
+        	// 		{
+        	// 			result += " + " + checkbox[i].value ;
+        	// 		}
+
+        	// 	}
+        	// 	alert(result);
+        	// 	document.getElementById('text6').innerHTML = result ;
+
+        	// }
+        	
+        </script>
+</body>
+</html>

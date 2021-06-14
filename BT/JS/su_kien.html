@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<style type="text/css">
+		#demo {
+			width: 300px;
+			height: 300px;
+			background: blue;
+		}
+	</style>
+</head>
+<body>
+	<!-- click  -->
+	<!-- <div id="demo" onmouseenter="this.style.backgroundColor = 'red'" onmouseleave="this.style.backgroundColor = 'blue'">
+		
+	</div>
+	<button onclick="hello()">Hello</button>
+	<button onclick='alert("hellooo")'>Hello</button>
+	<button onclick="alert("hello")">hello </button> //sai 
+
+	<p id="text"></p>
+	<script type="text/javascript">
+		function hello()
+		{
+			var name = "Vu Thuy Linh" ;
+			var year = 2000 ;
+			var str = "ten " + name + " nam sinh " + year ;
+			document.getElementById('text').innerHTML = str ; 
+		}
+	</script> -->
+	<!-- key board-->
+		<!-- <input type="text" name="" onkeydown="keydownHandler(event)"
+		onkeyup="keyupHandler(event)"
+		onkeypress="keupressHandler(event)">
+		<br>
+		<br>
+		<textarea id="log-div" row = "10" disabled></textarea>
+		<script type="text/javascript">
+			function keydownHandler(evt)  {
+				    appendLog("Keydown!");
+				}
+				 
+				function keyupHandler(evt)  {
+				    appendLog("Keyup!");
+				}
+				 
+				function keypressHandler(evt)  {
+				    appendLog("Keypress!");
+				}
+				 
+				 
+				function appendLog(text)  {
+				    var oldText = document.getElementById("log-div").value;
+				    document.getElementById("log-div").value = oldText+"\n"+ text;
+				}
+				 
+				function clearLog()  {
+				    document.getElementById("log-div").value = "";
+				}	
+		</script>
+ -->
+	<!--  -->
+		<!-- <input type="text"
+            onkeydown="keydownHandler(event)"/>
+      <br/><br/>
+ 
+      <div id="log-div1" style="color:red;"></div>
+`		
+		<script type="text/javascript">
+			function keydownHandler(evt)  {
+			 
+			   if(evt.shiftKey) {
+			      document.getElementById("log-div1").innerHTML ="evt.shiftKey = true";
+			   } else {
+			      document.getElementById("log-div1").innerHTML ="evt.shiftKey = false";
+			   }
+			 
+			}
+		</script>
+ -->
+<!-- change -->
+	<p class="title">Input (checkbox, radio):</p>
+      <input type="checkbox"  onchange ="changeHandler(event)"/>
+      <input type="radio" name ="gender" value="M" onchange ="changeHandler(event)"/>
+      <input type="radio" name ="gender" value="F" onchange ="changeHandler(event)"/>
+ 
+      <p class="title">Input (range):</p>
+      <input type="range" min ="1" max="10" onchange ="changeHandler(event)"/>
+ 
+      <p class="title">Input (color):</p>
+      <input type="color" onchange ="changeHandler(event)"/>
+ 
+      <p class="title">Input (file):</p>
+      <input type="file" onchange ="changeHandler(event)"/>
+ 
+ 
+      <p class="title">Input (image, hidden, buton, submit, reset):</p>
+       
+ 
+      <p class="title">Input (text, number, email, password, tel, time, week, month, date, datetime-local, search, url):</p>
+      <input type="text" onchange ="changeHandler(event)"/>
+ 
+      <p class="title">Textarea element</p>
+      <textarea onchange ="changeHandler(event)" rows="3" cols="30"></textarea>
+ 
+      <p class="title">Select:</p>
+      <select onchange ="changeHandler(event)">
+         <option value ="en">English</option>
+         <option value ="de">German</option>
+         <option value ="vi">Vietnamese</option>
+      </select>
+ 
+      <p id="log-div"></p>
+        <script>
+          function changeHandler(evt)  {
+            alert("Changed!");
+          }
+      </script>
+</body>
+</html>

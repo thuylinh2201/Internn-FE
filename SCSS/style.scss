@@ -1,0 +1,11 @@
+$main-color: blue ;
+.wrapper {
+    width: 500px;
+    height: 500px;
+    background-color: $main-color;
+    text-align: center;
+}
+.wrapper button {
+    background-color: $main-color;
+    padding: 5px;
+}
